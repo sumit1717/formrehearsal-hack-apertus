@@ -1,4 +1,4 @@
-<!-- Team-named report revision: verified public repository and local demo link. The PDF is the authoritative layout. Release upload and public playback remain unverified; all substantive results are unchanged. -->
+<!-- The PDF is the authoritative six-page layout. Public repository and demo links are absolute; substantive results are unchanged. -->
 
 # FormRehearsal technical report
 
@@ -8,7 +8,7 @@ Public repository: [sumit1717/formrehearsal-hack-apertus](https://github.com/sum
 
 Decision-summary source 86cd4eb1 · Model evidence cutoff 15 October 2026 at 00:22 UTC
 
-Demo: [local 118-second walkthrough](demo/FormRehearsal_Private_Evidence_Walkthrough.mp4); release upload and public playback verification pending.
+[Demo (118 seconds)](https://github.com/sumit1717/formrehearsal-hack-apertus/blob/92a9b4060a9d1b54870034a3e4966bd042417413/track_2b/demo/FormRehearsal_Private_Evidence_Walkthrough.mp4)
 
 ## 1 Summary
 
@@ -146,7 +146,7 @@ The public-source checker rejects extra or missing files/directories, symlinks a
 
 With the bounded decision-summary journey accepted, the next priority is useful Apertus interpretation on independently adjudicated new policies. Retain original outputs, abstentions and preparation failures. Observe consenting developers against the fair native baseline before claiming task benefit. Over another month, prioritize measured review burden, broader lifecycle/accessibility cases and a verified organization-administered app-plus-inference deployment.
 
-The public repository was created from HackApertus/project-template. Before submission, complete source/media integration and verify public judge access. Team, scoped project licenses and event terms are approved. The deadline is 16 October 2026 at 12:00 CEST / 10:00 UTC. Final artifact review, mandatory-checklist completion and the official portal receipt remain outstanding. The development repository remains private. [1, 9]
+The public repository was created from HackApertus/project-template. Team, scoped project licenses and event terms are approved. The deadline is 16 October 2026 at 12:00 CEST / 10:00 UTC. The development repository remains private. [1, 9]
 
 ### License and availability
 

@@ -3,7 +3,7 @@
   "scope": "public-release-static-bytes-only",
   "selfExcludedManifest": "PUBLIC_SOURCE_MANIFEST.v1.json",
   "inventoryEncoding": "sha256-of-utf8-json-sort-keys-compact-path-to-bytes-and-sha256",
-  "inventorySha256": "24c8c3c687c86a56e907b849d305029f58f087559532aa9ed9680783e35b42ae",
+  "inventorySha256": "99c323b6e19e7f3ffe2b3f3e666edcd51c324620a9184a54e58af606337b2948",
   "inventoriedFiles": 134,
   "totalFiles": 135,
   "files": {
@@ -76,8 +76,8 @@
       "sha256": "39f90ab76b66f0a481c791d4ebb636289776b65d8f6769594ca7999af16c8d37"
     },
     "track_2b/Sumit_Aswal_Report.pdf": {
-      "bytes": 66327,
-      "sha256": "c7e727e93ba6ac281872f19cf08e6a12946005f2e6b265fb7fef702c0ba4fb61"
+      "bytes": 66273,
+      "sha256": "47c261e66a7f66311041a5acdd01ba47026112daeefd11f64648832ef66914bd"
     },
     "track_2b/data/DATA_ATTRIBUTION.md": {
       "bytes": 2418,
@@ -540,8 +540,8 @@
       "sha256": "7ab039ec9268046eb62bf2cfe870732678ff971232082b08ed5c65fda636bd84"
     },
     "track_2b/technical_report.md": {
-      "bytes": 21293,
-      "sha256": "3e8fc27d2b49e3f4823a1e97299d191598287e1cc5c2356ff645af04c0d7aedd"
+      "bytes": 21061,
+      "sha256": "eec108fb3794a8b2b921bd2050f03e33cfd2c9277427e36928119176985694d0"
     }
   }
 }
