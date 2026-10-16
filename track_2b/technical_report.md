@@ -77,7 +77,7 @@ The ordinary-stop envelope reports 1,511 prompt plus 262 completion tokens; tran
 
 ## 4 Data
 
-Inputs are original synthetic policy/form families and retained model responses. Development cases have been exposed; historical holdout labels no longer imply unseen evaluation. Neither AI-authored cases nor source-authored approvals are human semantic gold. AI assistance in coding, research and evaluation is disclosed. Independent human validation is **n = 0**; no human-subject dataset, measured task benefit, adoption or product-market fit is claimed.
+Inputs are original synthetic policy/form families and retained model responses. Development cases have been exposed; historical holdout labels no longer imply unseen evaluation. Neither AI-authored cases nor source-authored approvals are human semantic gold. Independent human validation is **n = 0**; no human-subject dataset, measured task benefit, adoption or product-market fit is claimed.
 
 Bulk private captures are excluded. Nine exact historical r5 files remain necessary for the closed saved-response adapter. DATA_LICENSES.json licenses the listed synthetic and selected response data under CDLA-Permissive-2.0, only to the extent of contributor rights; the retained parser is Apache-2.0 code. No exclusive AI-output ownership is asserted. Final packaging needs a fresh contents and 100 MB data-limit check. [1, 2]
 

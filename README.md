@@ -35,7 +35,7 @@ The public repository was created from [the official template](https://github.co
 
 ## Evidence and limits
 
-Check 14 observed one authored synthetic equipment journey at desktop 1440×900 and mobile width 390×844. Approvals were agent-simulated, human participants were n=0, and provider attempts were zero. Two of sixteen combinations change; all sixteen retain an unknown access-instructions slot. Rechecking the supplied revision found zero discrepancies across five covered slots, with one unchecked. That is a partial handoff, not whole-form correctness or independent human validation.
+Check 14 observed one authored synthetic equipment journey at desktop 1440×900 and mobile width 390×844. This was an automated walkthrough with simulated approvals, zero human participants and no provider calls. Two of sixteen combinations change; all sixteen retain an unknown access-instructions slot. Rechecking the supplied revision found zero discrepancies across five covered slots, with one unchecked. That is a partial handoff, not whole-form correctness or independent human validation.
 
 Selected historical Apertus responses remain available with their failures. The separate model-only run 8 was rejected before projection, compilation or scoring; its cells are ineligible and unscored. Historical supported cells evaluated/planned remain 0/160 per arm. Useful Apertus interpretation, human benefit, full aggregate regression and qualifying app-plus-inference deployment remain unestablished. See [current evidence](CURRENT_EVIDENCE.md) and [remaining gates](HOSTED_GATES.md).
 

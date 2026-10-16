@@ -3,7 +3,7 @@
   "scope": "public-release-static-bytes-only",
   "selfExcludedManifest": "PUBLIC_SOURCE_MANIFEST.v1.json",
   "inventoryEncoding": "sha256-of-utf8-json-sort-keys-compact-path-to-bytes-and-sha256",
-  "inventorySha256": "55e49b8d894babb4bcb5e82ae922ca43bff9a417d0d167d0908b42f79897739f",
+  "inventorySha256": "24c8c3c687c86a56e907b849d305029f58f087559532aa9ed9680783e35b42ae",
   "inventoriedFiles": 134,
   "totalFiles": 135,
   "files": {
@@ -32,8 +32,8 @@
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     "LICENSE_POLICY.md": {
-      "bytes": 2158,
-      "sha256": "fb34c955a25b387cbb975fd070ed820bc4c458fc22580bfc5bfef272a1e1f777"
+      "bytes": 2047,
+      "sha256": "eda7868be7a18a7fa82b4a693479dd45df44790931c438d3e12f9e958f073438"
     },
     "Makefile": {
       "bytes": 143,
@@ -44,8 +44,8 @@
       "sha256": "53fbaefd776ec37ad6c4d99bc69353481e64858581cd6807a6b5b9cc4dac93ba"
     },
     "README.md": {
-      "bytes": 6745,
-      "sha256": "e1863301c1146a2c197b2510a6f34a2a1d7d7b9727095bca3c2ed1367f153c2a"
+      "bytes": 6758,
+      "sha256": "a241720b78acc434d5ee4e2c29d2735a2d536b4951cbef65efa082292a3e376b"
     },
     "checks/check_public_source_v1.py": {
       "bytes": 6497,
@@ -76,8 +76,8 @@
       "sha256": "39f90ab76b66f0a481c791d4ebb636289776b65d8f6769594ca7999af16c8d37"
     },
     "track_2b/Sumit_Aswal_Report.pdf": {
-      "bytes": 66372,
-      "sha256": "667353dc5892d3433c2c31c840d3b04b2c9a75c92c3ae8a50cb627c530ba7bf1"
+      "bytes": 66327,
+      "sha256": "c7e727e93ba6ac281872f19cf08e6a12946005f2e6b265fb7fef702c0ba4fb61"
     },
     "track_2b/data/DATA_ATTRIBUTION.md": {
       "bytes": 2418,
@@ -540,8 +540,8 @@
       "sha256": "7ab039ec9268046eb62bf2cfe870732678ff971232082b08ed5c65fda636bd84"
     },
     "track_2b/technical_report.md": {
-      "bytes": 21356,
-      "sha256": "1aa2d6938e2749c8ef52eb8d0d708d0af5417601b767597f7e66773a3e967870"
+      "bytes": 21293,
+      "sha256": "3e8fc27d2b49e3f4823a1e97299d191598287e1cc5c2356ff645af04c0d7aedd"
     }
   }
 }

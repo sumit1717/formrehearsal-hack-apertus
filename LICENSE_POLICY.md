@@ -1,6 +1,6 @@
 # FormRehearsal licensing
 
-Copyright 2026 Sumit Aswal. Original human-authored contributions are licensed as listed below, to the extent of rights held by the contributor. AI assistance in coding, documentation and synthetic-example preparation is disclosed in the technical report. No exclusive copyright in purely generated material, third-party rights, or ownership of Apertus is asserted.
+Copyright 2026 Sumit Aswal. Original human-authored contributions are licensed as listed below, to the extent of rights held by the contributor. No exclusive copyright in purely generated material, third-party rights, or ownership of Apertus is asserted.
 
 - Original program code and executable/build configuration: Apache License 2.0, in [LICENSE](LICENSE).
 - Original documentation, standalone prompts, report, captions and walkthrough content: Creative Commons Attribution 4.0, in [CC-BY-4.0](track_2b/docs/licenses/CC-BY-4.0.txt).
