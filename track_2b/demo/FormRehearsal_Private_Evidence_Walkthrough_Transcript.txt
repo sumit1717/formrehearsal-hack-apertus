@@ -1,0 +1,31 @@
+FormRehearsal check14. Private, silent, edited still-image walkthrough. Frozen authored example. No continuous interaction footage or new model call.
+
+000–009 seconds
+A policy changed: heavy courier deliveries with a loading dock no longer need unloading assistance. Which form questions must change?
+
+009–022 seconds
+FormRehearsal compares the old and amended interpretations after separate, explicit approvals. These example rules are authored; both approvals here are agent-simulated.
+
+022–038 seconds
+For this heavy courier request with a dock, the amended interpretation hides both questions; the original form shows them. The explorer can inspect other declared requests.
+
+038–048 seconds
+Compare the neighboring request without a dock. Both questions remain visible. Only the dock answer differs, making the policy exception easy to inspect.
+
+048–058 seconds
+Two of sixteen declared combinations change. Urgency does not affect this exception. Access-instructions visibility stays unknown in every combination.
+
+058–070 seconds
+The unresolved clause says “special arrangements”. The policy owner must decide when access instructions should appear, and whether that needs another input.
+
+070–083 seconds
+Load the authored example revision. It supplies two visibility edits and fills the editor only. Inspect those edits, then explicitly recheck against the amended approval.
+
+083–097 seconds
+The fresh result reports no discrepancies across five covered slots and sixteen combinations. One slot remains unchecked, so this is a partial check.
+
+097–108 seconds
+Download the exact checked form and its result. Editing, even then reverting, disables those downloads until a fresh check completes.
+
+108–118 seconds
+The developer can take the exact checked revision forward. The policy owner has a grounded question to resolve. Both remain tied to their review scope.

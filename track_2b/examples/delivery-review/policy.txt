@@ -1,0 +1,1 @@
+Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required.

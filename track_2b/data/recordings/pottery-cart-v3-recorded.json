@@ -1,0 +1,38 @@
+{
+  "id": "pottery-cart-v3-recorded",
+  "familyId": "pottery-cart",
+  "rawFinalText": "{\n  \"status\": \"ok\",\n  \"rules\": [\n    {\n      \"field\": \"drip_tray\",\n      \"property\": \"visible\",\n      \"condition\": {\n        \"op\": \"not\",\n        \"args\": [\n          {\n            \"op\": \"all\",\n            \"args\": [\n              {\n                \"op\": \"ne\",\n                \"field\": \"glazing_area\",\n                \"value\": true\n              },\n              {\n                \"op\": \"ne\",\n                \"field\": \"item\",\n                \"value\": \"wheel\"\n              }\n            ]\n          }\n        ]\n      },\n      \"quote\": \"Unless neither the glazing area is used nor the item is wheel, show drip tray status; in that excluded case, hide it.\"\n    },\n    {\n      \"field\": \"drip_tray\",\n      \"property\": \"required\",\n      \"condition\": {\n        \"op\": \"all\",\n        \"args\": [\n          {\n            \"op\": \"eq\",\n            \"field\": \"glazing_area\",\n            \"value\": true\n          },\n          {\n            \"op\": \"eq\",\n            \"field\": \"returned_clean\",\n            \"value\": false\n          }\n        ]\n      },\n      \"quote\": \"While that field is shown, require it exactly when the glazing area is used.\"\n    },\n    {\n      \"field\": \"porter_note\",\n      \"property\": \"visible\",\n      \"condition\": {\n        \"op\": \"gte\",\n        \"field\": \"cart_count\",\n        \"value\": 2\n      },\n      \"quote\": \"Hide porter note recorded for fewer than 2 carts; show it for 2 or 3 carts.\"\n    },\n    {\n      \"field\": \"porter_note\",\n      \"property\": \"required\",\n      \"condition\": {\n        \"op\": \"all\",\n        \"args\": [\n          {\n            \"op\": \"eq\",\n            \"field\": \"item\",\n            \"value\": \"wheel\"\n          },\n          {\n            \"op\": \"eq\",\n            \"field\": \"cart_count\",\n            \"value\": 3\n          }\n        ]\n      },\n      \"quote\": \"While porter note recorded is shown, require an answer exactly when the item is wheel and there are 3 carts.\"\n    }\n  ]\n}",
+  "provenance": {
+    "kind": "recorded-live-provider-response",
+    "provider": "CSCS",
+    "model": "swiss-ai/Apertus-v1.5-70B",
+    "returnedModel": "swiss-ai/Apertus-v1.5-70B",
+    "date": "2026-10-03",
+    "runId": "37158792936",
+    "runAttempt": "1",
+    "runUrl": "https://github.com/sumit1717/doru-formrehearsal/actions/runs/37158792936",
+    "commit": "cdbaff829bf900faabbaf2094e01d2656e982d67",
+    "caseId": "case-007",
+    "contractVersion": "quote-extraction-v3",
+    "requestConfig": {
+      "temperature": 0,
+      "max_tokens": 2048,
+      "stream": false
+    },
+    "requestSha256": "24f2434dc0d2a3bdf148f693640e2fe446228d656083e8babe8e45760892269e",
+    "promptSha256": "8eeb76de4158b8dd12475d8d4b6fafba6144d1d52560d2fd0bf9d1806fdc91ce",
+    "settingsSha256": "a921b150f5fc8add74d181283bbfda84fc3ec6d613d7bb651171cba503e32a94",
+    "planSha256": "914385a872087c4958a8c16f3410f0e9bd0eaec0dbf31c8711684de66e64c103",
+    "sourceReportSha256": "cb4b1d3b8a1765810d97de5027f37308faf75d233dcda8767202c87dc72fd848",
+    "sourceManifestSha256": "84053d0846035591247cbdb3f30f21f56d38bd08d516a6450bc6d100d0baf4b7",
+    "sourceContextSha256": "4d6ffc359f6d70eabc914769463a7c4bdfe98fc39c6b208d988c1677ac6dcf37",
+    "rawFinalTextSha256": "bb4470aedf2da10fc6ab96faded74e8df2ecfa19f90b2fdeb4fd7e5f570b104c",
+    "historicalStatus": "invalid",
+    "historicalValidity": {
+      "strictJsonValid": true,
+      "wireSchemaValid": false,
+      "normalizedSchemaValid": false
+    },
+    "claim": "Selected exposed synthetic development recording; not blind evaluation or independent human gold. No fresh inference runs in this product flow."
+  }
+}

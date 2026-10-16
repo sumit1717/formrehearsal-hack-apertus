@@ -1,0 +1,95 @@
+1
+00:00:00,000 --> 00:00:06,733
+A policy changed: heavy courier deliveries with a loading dock no longer need unloading assistance.
+
+2
+00:00:06,733 --> 00:00:09,000
+Which form questions must change?
+
+3
+00:00:09,000 --> 00:00:15,800
+FormRehearsal compares the old and amended interpretations after separate, explicit approvals.
+
+4
+00:00:15,800 --> 00:00:22,000
+These example rules are authored; both approvals here are agent-simulated.
+
+5
+00:00:22,000 --> 00:00:33,700
+For this heavy courier request with a dock, the amended interpretation hides both questions; the original form shows them.
+
+6
+00:00:33,700 --> 00:00:38,000
+The explorer can inspect other declared requests.
+
+7
+00:00:38,000 --> 00:00:41,033
+Compare the neighboring request without a dock.
+
+8
+00:00:41,033 --> 00:00:42,767
+Both questions remain visible.
+
+9
+00:00:42,767 --> 00:00:48,000
+Only the dock answer differs, making the policy exception easy to inspect.
+
+10
+00:00:48,000 --> 00:00:51,167
+Two of sixteen declared combinations change.
+
+11
+00:00:51,167 --> 00:00:54,300
+Urgency does not affect this exception.
+
+12
+00:00:54,300 --> 00:00:58,000
+Access-instructions visibility stays unknown in every combination.
+
+13
+00:00:58,000 --> 00:01:01,267
+The unresolved clause says “special arrangements”.
+
+14
+00:01:01,267 --> 00:01:10,000
+The policy owner must decide when access instructions should appear, and whether that needs another input.
+
+15
+00:01:10,000 --> 00:01:12,600
+Load the authored example revision.
+
+16
+00:01:12,600 --> 00:01:17,800
+It supplies two visibility edits and fills the editor only.
+
+17
+00:01:17,800 --> 00:01:23,000
+Inspect those edits, then explicitly recheck against the amended approval.
+
+18
+00:01:23,000 --> 00:01:30,900
+The fresh result reports no discrepancies across five covered slots and sixteen combinations.
+
+19
+00:01:30,900 --> 00:01:37,000
+One slot remains unchecked, so this is a partial check.
+
+20
+00:01:37,000 --> 00:01:41,400
+Download the exact checked form and its result.
+
+21
+00:01:41,400 --> 00:01:48,000
+Editing, even then reverting, disables those downloads until a fresh check completes.
+
+22
+00:01:48,000 --> 00:01:51,600
+The developer can take the exact checked revision forward.
+
+23
+00:01:51,600 --> 00:01:55,200
+The policy owner has a grounded question to resolve.
+
+24
+00:01:55,200 --> 00:01:58,000
+Both remain tied to their review scope.

@@ -1,0 +1,1 @@
+{"title":"Portable delivery rules","elements":[{"type":"boolean","name":"delivery"},{"type":"boolean","name":"delivery_note","visibleIf":"{delivery} = false"},{"type":"boolean","name":"return_note"},{"type":"boolean","name":"packing_note"},{"type":"boolean","name":"contact_note"}]}

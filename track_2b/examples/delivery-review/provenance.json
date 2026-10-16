@@ -1,0 +1,20 @@
+{
+  "kind": "formrehearsal-delivery-example-provenance",
+  "version": 1,
+  "source": "tests/helpers/approved-specification-fixture.mjs",
+  "derivation": {
+    "policy.txt": "rawInput().policyText (exact bytes)",
+    "drivers.txt": "rawInput().driverText (exact bytes)",
+    "form-corrected.json": "rawInput().formText (exact bytes)",
+    "form-defective.json": "Parsed corrected form with only delivery_note.visibleIf changed from '{delivery} = true' to '{delivery} = false'; serialized by JSON.stringify-equivalent compact JSON.",
+    "manual-rules.json": "wireRules() in an independent-rules-v1 envelope; agent-packaged authored fixture, not model output."
+  },
+  "actorKind": "agent-simulation",
+  "humanReviewPerformed": false,
+  "modelInference": "not-run",
+  "browserExecution": "not-run-by-this-pack",
+  "videoProduced": false,
+  "approvalClock": "Fixed 2026-10-10T00:00:00.000Z for deterministic simulation only; not evidence of a real person or real approval time.",
+  "scope": "One Boolean driver, four Boolean targets, eight target/property slots, two complete assignments; requiredness compared only while target actually visible.",
+  "claim": "Synthetic local software rehearsal. Independent authoring means independent of model extraction, not independent human evaluation or validated policy truth."
+}

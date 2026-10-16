@@ -1,0 +1,38 @@
+{
+  "id": "garden-tool-shed-v3-recorded",
+  "familyId": "garden-tool-shed",
+  "rawFinalText": "{\n  \"status\": \"ok\",\n  \"rules\": [\n    {\n      \"field\": \"ground_sheet\",\n      \"property\": \"visible\",\n      \"condition\": {\n        \"op\": \"eq\",\n        \"field\": \"weather\",\n        \"value\": \"rainy\"\n      },\n      \"quote\": \"Ground sheet status: show if and only if weather is rainy.\"\n    },\n    {\n      \"field\": \"ground_sheet\",\n      \"property\": \"required\",\n      \"condition\": {\n        \"op\": \"all\",\n        \"args\": [\n          {\"op\": \"gte\", \"field\": \"soil_boxes\", \"value\": 2},\n          {\"op\": \"eq\", \"field\": \"powered_tool\", \"value\": true}\n        ]\n      },\n      \"quote\": \"Ground sheet status: when shown, an answer is mandatory if and only if there are at least 2 soil boxes and a powered tool is selected.\"\n    },\n    {\n      \"field\": \"return_plan\",\n      \"property\": \"visible\",\n      \"condition\": true,\n      \"quote\": \"Return plan status: show for every request.\"\n    },\n    {\n      \"field\": \"return_plan\",\n      \"property\": \"required\",\n      \"condition\": {\n        \"op\": \"all\",\n        \"args\": [\n          {\"op\": \"eq\", \"field\": \"powered_tool\", \"value\": true},\n          {\"op\": \"ne\", \"field\": \"return_before_dusk\", \"value\": true}\n        ]\n      },\n      \"quote\": \"Return plan status: an answer is mandatory if and only if a powered tool is selected and return is not before dusk.\"\n    }\n  ]\n}",
+  "provenance": {
+    "kind": "recorded-live-provider-response",
+    "provider": "CSCS",
+    "model": "swiss-ai/Apertus-v1.5-70B",
+    "returnedModel": "swiss-ai/Apertus-v1.5-70B",
+    "date": "2026-10-03",
+    "runId": "37154134064",
+    "runAttempt": "1",
+    "runUrl": "https://github.com/sumit1717/doru-formrehearsal/actions/runs/37154134064",
+    "commit": "81333f5af2b3084da31f36d478f04fae4f51b9f2",
+    "caseId": "task-extract-001",
+    "contractVersion": "quote-extraction-v3",
+    "requestConfig": {
+      "temperature": 0,
+      "max_tokens": 2048,
+      "stream": false
+    },
+    "requestSha256": "4b739ca1dc5d5535f5c73ff34e8bed097de5b9b13cd085b875c26129e2eb8d11",
+    "promptSha256": "8eeb76de4158b8dd12475d8d4b6fafba6144d1d52560d2fd0bf9d1806fdc91ce",
+    "settingsSha256": "7d02bd73f216d9053762ad2844588e1f0332be1ecb4bfbab5b66b24035fdefdc",
+    "planSha256": "cdc20598c8560411e97f248cd22379c4f6540c2389f893dbfc46744ab9654dbf",
+    "sourceReportSha256": "ee6f75012fee330383b04fa523dcff2d8bfa0af8a9e8370911c1543e9ff1f29d",
+    "sourceManifestSha256": "d86f7db18639a14560c2aa3bfdb6fed0d50bec9aaaac4f22d33e0da125d6c715",
+    "sourceContextSha256": "e986c92abe96912bbfb508647045d111cbd587aecdefa901dc19da40a29a97f3",
+    "rawFinalTextSha256": "77ddd8ae89ce0b656d9955c9a35f5c5b3be110ec548e023c9191041dd74b7d32",
+    "historicalStatus": "scored",
+    "historicalValidity": {
+      "strictJsonValid": true,
+      "wireSchemaValid": true,
+      "normalizedSchemaValid": true
+    },
+    "claim": "Selected exposed synthetic development recording; not blind evaluation or independent human gold. No fresh inference runs in this product flow."
+  }
+}

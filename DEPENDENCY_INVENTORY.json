@@ -1,0 +1,38 @@
+{
+  "scope": "Exact curated runtime/build dependencies; observed harness versions are separate evidence, not shipped runtime dependencies",
+  "runtime_npm": {
+    "survey-core": {
+      "version": "3.1.2",
+      "license": "MIT",
+      "integrity": "sha512-KNKmvCjcaeKKCFikv9Zt1SW0qZa4mVr4lqPXUhBLcZC8h5THs671kGMuF4W9KyatpjKNLWfBNDcACgBNP6HPPg=="
+    }
+  },
+  "runtime_node_engine": ">=24",
+  "docker_base": "node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1",
+  "build_fetches": [
+    "Pinned Docker Hub base image",
+    "Integrity-locked npm survey-core 3.1.2 tarball"
+  ],
+  "install_command": "npm ci --omit=dev --ignore-scripts --no-audit --no-fund",
+  "runtime_network": "Keyless default makes no provider call; optional explicit inference requires approved configuration; ordinary loopback host-port Docker launch uses bridge networking",
+  "judge_host_prerequisites": [
+    "Docker",
+    "Make",
+    "browser"
+  ],
+  "maintainer_prerequisites": [
+    "Python 3 for package checker",
+    "Node 24+ and locked SurveyJS only for separately authorized native product commands"
+  ],
+  "historical_python_parser": "Retained as inert evidence only; not executed by app",
+  "observed_journey_harness_not_curated_image": {
+    "node": "v24.20.0",
+    "playwright": "1.63.0",
+    "chrome_for_testing": "153.0.8010.12",
+    "image_sha256": "dde044bf374cec9ffca4f32873220b40f2d032d784aa058f54fe558453b9f59f"
+  },
+  "curated_docker_execution": "not-run",
+  "model_weights_included": false,
+  "new_dependency_or_version_changes": false,
+  "third_party_notices": "track_2b/docs/THIRD_PARTY_NOTICES.md; template Apache-2.0 license retained; unmodified installed package/image component notices must remain with their respective distributions."
+}

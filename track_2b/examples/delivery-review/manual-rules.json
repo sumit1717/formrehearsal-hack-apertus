@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "kind": "independent-rules-v1",
+  "rules": [
+    {
+      "field": "delivery_note",
+      "property": "visible",
+      "condition": {
+        "op": "eq",
+        "field": "delivery",
+        "value": true
+      },
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    },
+    {
+      "field": "delivery_note",
+      "property": "required",
+      "condition": false,
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    },
+    {
+      "field": "return_note",
+      "property": "visible",
+      "condition": true,
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    },
+    {
+      "field": "return_note",
+      "property": "required",
+      "condition": false,
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    },
+    {
+      "field": "packing_note",
+      "property": "visible",
+      "condition": true,
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    },
+    {
+      "field": "packing_note",
+      "property": "required",
+      "condition": false,
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    },
+    {
+      "field": "contact_note",
+      "property": "visible",
+      "condition": true,
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    },
+    {
+      "field": "contact_note",
+      "property": "required",
+      "condition": false,
+      "quote": "Show the delivery note exactly when delivery is requested. The other notes are always shown. No note is required."
+    }
+  ]
+}

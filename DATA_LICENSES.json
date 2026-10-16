@@ -1,0 +1,329 @@
+{
+  "status": "OWNER_APPROVED_SCOPED_GRANTS",
+  "grantScope": "Only rights the contributor may grant; no claim to exclusive AI-output ownership. Third-party rights stay separate.",
+  "dataLicenseText": "track_2b/docs/licenses/CDLA-Permissive-2.0.txt",
+  "records": {
+    "track_2b/data/fixtures/corpus.json": {
+      "sha256": "8fe41c0c3cf1c35352c4eddce88aa8f646c027d8908dd16ea2785646bb95306b",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/audio-cart-v3-recorded.json": {
+      "sha256": "bc24620d577664b6da281b4a3b9d818cac4e82f88b8138faf8ecba7a4e40247b",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/garden-tool-shed-v3-recorded.json": {
+      "sha256": "cd859ff13e3d9c39225850b96fa895a3f43e72ffa28cd64dfcab5499661d2c01",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/pottery-cart-v3-recorded.json": {
+      "sha256": "59f90ae99538df8fee4ffbbf5d9680f05f314c1c131d2a0affe423ade4b60c40",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/app-input.json": {
+      "sha256": "fde4654919089854c1f0c2baa28b22b42771cab98efd055fc58393b91fff82cd",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/capture-receipt.json": {
+      "sha256": "9bac7393244a56f152c8fb75c292ef15ef8621b05a392e7d9132a4cfd9276edf",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/derived-provenance.json": {
+      "sha256": "9ef89962a2fc6ac36e3d4b559b90b43e2d9afbe32923c7f41949bc37fb1c4414",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/derived-record.json": {
+      "sha256": "7e5bb3932cf52c0d6fc0211e111e9d4e5edca9c5acc275483085484cb9b805dd",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/original-assistant-content.txt": {
+      "sha256": "f9f5221b248bc224b265f6ed90797fc7266bed7c0dccb1cbcf04a6b647295947",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/original-envelope.json": {
+      "sha256": "f949c9055dd77e514a9cc4d9a70810608b24d4cc29fe949787391c6530247669",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/request.json": {
+      "sha256": "1369fa270afb7390c7bef55a18c140dc694533d50318f0d81ea8af16b111bb5c",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Selected CSCS/Apertus v1.5 70B synthetic-policy evidence, plus original inputs and provenance. Not human gold.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/examples/delivery-review/drivers.txt": {
+      "sha256": "b4af39d5b65a14849e885a9d65f0efe4f4e689989689c28c16cfcb3a6e78db5a",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/examples/delivery-review/form-corrected.json": {
+      "sha256": "71f3e76eaebbbd720a271a92a23f926b6dd171985b4e7bac7a950ff309b09b3e",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/examples/delivery-review/form-defective.json": {
+      "sha256": "fff06972b9d8c7cf48f41961afb66d67c9566e31f27beaa2043d25e291aebda3",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/examples/delivery-review/manual-rules.json": {
+      "sha256": "5fae7d98a549e8de46d34074cd551cff0fc8b89f2d144fd6039833666fe530c5",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/examples/delivery-review/policy.txt": {
+      "sha256": "36ca5139f8db74242abf7567ae5000245bfeb2c621aef47ebdadfd74f7dd69ea",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/examples/delivery-review/provenance.json": {
+      "sha256": "0e99040fe29ddc41a4664bcb474da083c48b987fb9957c2718180ed60abc505a",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/public/equipment-practice.json": {
+      "sha256": "59488e7852d0dc956acf8a8c98996f32f8b2ac7c7067659779e8c857922bd7af",
+      "license": "CDLA-Permissive-2.0",
+      "provenance": "Original synthetic policy/form/rules or provenance; no human-subject data.",
+      "humanSubjects": false,
+      "independentHumanGold": false
+    },
+    "track_2b/data/recordings/r5-sparse-candidate/extraction-v5.txt": {
+      "sha256": "29a8143e09cb936acba071df635852331185c467cff04f6b3ecaae1d0acebedd",
+      "license": "CC-BY-4.0 OR CDLA-Permissive-2.0",
+      "provenance": "Original prompt; dual offer applies to this retained dataset copy."
+    },
+    "track_2b/examples/policy-change/equipment-delivery.mjs": {
+      "sha256": "715f1d3706cfaf807bc4b740e55e07329f769d79632661316ac5bdea79fd73c9",
+      "license": "Apache-2.0 for executable code; CDLA-Permissive-2.0 also offered for original synthetic literal dataset content",
+      "provenance": "Authored equipment example; no model response."
+    }
+  },
+  "instances": [
+    {
+      "id": "synthetic:camera-pool",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/0",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:garden-tool-shed",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/1",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:audio-cart",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/2",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:pottery-cart",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/3",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:community-hall",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/4",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:board-game-loan",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/5",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:maker-bench",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/6",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:projector-kit",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/7",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "dev",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:picnic-kit",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/8",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "holdout",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:puppet-stage",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/9",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "holdout",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:puzzle-table",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/10",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "holdout",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "synthetic:costume-rack",
+      "file": "track_2b/data/fixtures/corpus.json",
+      "jsonPointer": "/11",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic policy/form family",
+      "historicalSplit": "holdout",
+      "currentExposure": "Development-exposed; holdout label is historical, not unseen evaluation",
+      "independentHumanGold": false
+    },
+    {
+      "id": "audio-cart-v3-recorded",
+      "file": "track_2b/data/recordings/audio-cart-v3-recorded.json",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Selected real CSCS model response on an original synthetic policy",
+      "requestedModel": "swiss-ai/Apertus-v1.5-70B",
+      "runId": "37158792936",
+      "caseId": "case-004",
+      "rawFinalTextSha256": "f3946f34d7298e356bc362a511e18c517e16fdd5336a4818d3e4d6e7061019f6",
+      "humanGold": false,
+      "rawFinalTextUnchanged": true
+    },
+    {
+      "id": "garden-tool-shed-v3-recorded",
+      "file": "track_2b/data/recordings/garden-tool-shed-v3-recorded.json",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Selected real CSCS model response on an original synthetic policy",
+      "requestedModel": "swiss-ai/Apertus-v1.5-70B",
+      "runId": "37154134064",
+      "caseId": "task-extract-001",
+      "rawFinalTextSha256": "77ddd8ae89ce0b656d9955c9a35f5c5b3be110ec548e023c9191041dd74b7d32",
+      "humanGold": false,
+      "rawFinalTextUnchanged": true
+    },
+    {
+      "id": "pottery-cart-v3-recorded",
+      "file": "track_2b/data/recordings/pottery-cart-v3-recorded.json",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Selected real CSCS model response on an original synthetic policy",
+      "requestedModel": "swiss-ai/Apertus-v1.5-70B",
+      "runId": "37158792936",
+      "caseId": "case-007",
+      "rawFinalTextSha256": "bb4470aedf2da10fc6ab96faded74e8df2ecfa19f90b2fdeb4fd7e5f570b104c",
+      "humanGold": false,
+      "rawFinalTextUnchanged": true
+    },
+    {
+      "id": "D-2B-CANDIDATE-r5",
+      "filesPrefix": "track_2b/data/recordings/r5-sparse-candidate/",
+      "license": "CDLA-Permissive-2.0 for the data records; prompt dual offer and parser-code exception are in records",
+      "source": "Selected historical CSCS host-declared capture on original synthetic input",
+      "requestedModel": "swiss-ai/Apertus-v1.5-70B",
+      "runId": "38087160778",
+      "originIndependentlyAuthenticated": false,
+      "answerEligible": false,
+      "humanGold": false,
+      "contentFilesUnchanged": true
+    },
+    {
+      "id": "delivery-review-authored",
+      "filesPrefix": "track_2b/examples/delivery-review/",
+      "license": "CDLA-Permissive-2.0 for data; Apache-2.0 for reproduce.mjs; CC-BY-4.0 for README",
+      "source": "Original authored synthetic fixture",
+      "modelInference": false,
+      "humanGold": false
+    },
+    {
+      "id": "equipment-delivery-authored",
+      "file": "track_2b/public/equipment-practice.json",
+      "license": "CDLA-Permissive-2.0",
+      "source": "Original authored synthetic old/amended policy, rules and revision",
+      "modelInference": false,
+      "humanGold": false
+    }
+  ]
+}

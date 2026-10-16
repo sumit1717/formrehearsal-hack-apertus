@@ -1,0 +1,20 @@
+FormRehearsal
+Copyright 2026 Sumit Aswal
+
+HackApertus project template
+https://github.com/HackApertus/project-template
+Template material originally reviewed at commit 7f2382275461baf3fa6c8855d157d86abffe9f0e.
+Retained challenge text: track_2b/CHALLENGE_TEMPLATE.md.
+The technical report's outline is adapted from the official Track 2B report scaffold; the FormRehearsal narrative, evaluation and limitations replace the scaffold's example content. The scaffold declares CC-BY-4.0. The template's Apache-2.0 license remains in track_2b/docs/licenses/HackApertus-template-APACHE-2.0.txt. No upstream NOTICE file was observed at that pinned template revision. The public release repository https://github.com/sumit1717/formrehearsal-hack-apertus was separately generated from the official template, with initial commit b59520fe9ad216fbb891fa695369851220458ff1 and tree 2d5642aa258364395f3ebd3f1e120912efd2958f, matching current template source commit 09f8e9e2b588db3325869b23c6d5132f5c3756f7. This does not change the earlier development repository's independently created origin. The retained historical template material above keeps its original source attribution.
+
+SurveyJS survey-core 3.1.2
+Copyright (c) 2015-2026 Devsoft Baltic OÜ (distributed package header).
+The unmodified upstream MIT license text retains its 2015-2025 notice.
+https://github.com/surveyjs/survey-library
+
+Apertus v1.5 70B by the Swiss AI Initiative is the requested model for retained CSCS-hosted synthetic response examples. Actual hosted model revision remains unknown. No model weights, tokenizer or model runtime are distributed in this source release. The model's weight license is not asserted to be an automatic license over output text.
+
+DejaVu Sans fonts
+Bitstream Vera font software copyright 2003 Bitstream, Inc.; imported Arev glyphs copyright 2006 Tavmjong Bah; DejaVu changes public domain. Applicable font notices accompany the report. Rendered media attribution does not purport to relicense font software.
+
+This NOTICE is attribution information and does not modify any license. Full third-party notices are in track_2b/docs/THIRD_PARTY_NOTICES.md.

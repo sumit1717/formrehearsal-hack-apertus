@@ -1,0 +1,17 @@
+{
+  "name": "formrehearsal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Private single-track bounded form-policy judge staging",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "demo": "node examples/delivery-review/reproduce.mjs artifacts/delivery-demo"
+  },
+  "dependencies": {
+    "survey-core": "3.1.2"
+  }
+}

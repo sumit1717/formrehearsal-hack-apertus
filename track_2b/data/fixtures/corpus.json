@@ -1,0 +1,3574 @@
+[
+  {
+    "id": "camera-pool",
+    "title": "Community Camera Pool",
+    "split": "dev",
+    "wordingStyle": "plain narrative",
+    "policy": "The camera pool uses the session setting, group size, powered support choice, and orientation status to arrange a kit. Show tripod case status exactly when the session is outdoor or the group size is at least 3. While tripod case status is shown, require it exactly when the session is outdoor and powered support is requested. Always show battery check recorded. Require battery check recorded exactly when orientation is not completed and the group size is at least 2.",
+    "fields": [
+      {
+        "name": "session_setting",
+        "label": "Session setting",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "indoor",
+          "outdoor"
+        ]
+      },
+      {
+        "name": "group_size",
+        "label": "Group size",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "powered_support",
+        "label": "Powered support requested",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "orientation_done",
+        "label": "Orientation completed",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "tripod_case",
+        "label": "Tripod case status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "battery_check",
+        "label": "Battery check recorded",
+        "role": "target",
+        "kind": "boolean"
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "camera-pool-r1",
+          "field": "tripod_case",
+          "property": "visible",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "session_setting",
+                "value": "outdoor"
+              },
+              {
+                "op": "gte",
+                "field": "group_size",
+                "value": 3
+              }
+            ]
+          },
+          "source": {
+            "start": 119,
+            "end": 211,
+            "quote": "Show tripod case status exactly when the session is outdoor or the group size is at least 3."
+          }
+        },
+        {
+          "id": "camera-pool-r2",
+          "field": "tripod_case",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "session_setting",
+                "value": "outdoor"
+              },
+              {
+                "op": "eq",
+                "field": "powered_support",
+                "value": true
+              }
+            ]
+          },
+          "source": {
+            "start": 212,
+            "end": 327,
+            "quote": "While tripod case status is shown, require it exactly when the session is outdoor and powered support is requested."
+          }
+        },
+        {
+          "id": "camera-pool-r3",
+          "field": "battery_check",
+          "property": "visible",
+          "condition": true,
+          "source": {
+            "start": 328,
+            "end": 363,
+            "quote": "Always show battery check recorded."
+          }
+        },
+        {
+          "id": "camera-pool-r4",
+          "field": "battery_check",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "orientation_done",
+                  "value": true
+                }
+              },
+              {
+                "op": "gte",
+                "field": "group_size",
+                "value": 2
+              }
+            ]
+          },
+          "source": {
+            "start": 364,
+            "end": 470,
+            "quote": "Require battery check recorded exactly when orientation is not completed and the group size is at least 2."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Community Camera Pool",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "session_setting",
+                "title": "Session setting",
+                "type": "radiogroup",
+                "choices": [
+                  "indoor",
+                  "outdoor"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "group_size",
+                "title": "Group size",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "powered_support",
+                "title": "Powered support requested",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "orientation_done",
+                "title": "Orientation completed",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "tripod_case",
+                "title": "Tripod case status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({session_setting} = 'outdoor') or ({group_size} >= 3))",
+                "requiredIf": "(({session_setting} = 'outdoor') and ({powered_support} = true))"
+              },
+              {
+                "name": "battery_check",
+                "title": "Battery check recorded",
+                "type": "boolean",
+                "visibleIf": "true",
+                "requiredIf": "(({orientation_done} != true) and ({group_size} >= 2))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Community Camera Pool",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "session_setting",
+                "title": "Session setting",
+                "type": "radiogroup",
+                "choices": [
+                  "indoor",
+                  "outdoor"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "group_size",
+                "title": "Group size",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "powered_support",
+                "title": "Powered support requested",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "orientation_done",
+                "title": "Orientation completed",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "tripod_case",
+                "title": "Tripod case status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({session_setting} != 'outdoor') or ({group_size} >= 3))",
+                "requiredIf": "(({session_setting} = 'outdoor') and ({powered_support} = true))"
+              },
+              {
+                "name": "battery_check",
+                "title": "Battery check recorded",
+                "type": "boolean",
+                "visibleIf": "true",
+                "requiredIf": "(({orientation_done} != true) and ({group_size} >= 2))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Reverse the outdoor predicate in tripod case visibility from equality to inequality.",
+      "targetField": "tripod_case",
+      "property": "visible",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "garden-tool-shed",
+    "title": "Garden Tool Shed",
+    "split": "dev",
+    "wordingStyle": "posted rulebook",
+    "policy": "Tool shed rules follow. Weather is sunny or rainy; soil boxes range from 0 to 4; the other choices record powered tool use and return before dusk. Ground sheet status: show if and only if weather is rainy. Ground sheet status: when shown, an answer is mandatory if and only if there are at least 2 soil boxes and a powered tool is selected. Return plan status: show for every request. Return plan status: an answer is mandatory if and only if a powered tool is selected and return is not before dusk.",
+    "fields": [
+      {
+        "name": "weather",
+        "label": "Weather",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "sunny",
+          "rainy"
+        ]
+      },
+      {
+        "name": "soil_boxes",
+        "label": "Soil boxes",
+        "role": "driver",
+        "kind": "integer",
+        "min": 0,
+        "max": 4
+      },
+      {
+        "name": "powered_tool",
+        "label": "Powered tool selected",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "return_before_dusk",
+        "label": "Return before dusk",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "ground_sheet",
+        "label": "Ground sheet status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "return_plan",
+        "label": "Return plan status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "garden-tool-shed-r1",
+          "field": "ground_sheet",
+          "property": "visible",
+          "condition": {
+            "op": "eq",
+            "field": "weather",
+            "value": "rainy"
+          },
+          "source": {
+            "start": 147,
+            "end": 205,
+            "quote": "Ground sheet status: show if and only if weather is rainy."
+          }
+        },
+        {
+          "id": "garden-tool-shed-r2",
+          "field": "ground_sheet",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "gte",
+                "field": "soil_boxes",
+                "value": 2
+              },
+              {
+                "op": "eq",
+                "field": "powered_tool",
+                "value": true
+              }
+            ]
+          },
+          "source": {
+            "start": 206,
+            "end": 340,
+            "quote": "Ground sheet status: when shown, an answer is mandatory if and only if there are at least 2 soil boxes and a powered tool is selected."
+          }
+        },
+        {
+          "id": "garden-tool-shed-r3",
+          "field": "return_plan",
+          "property": "visible",
+          "condition": true,
+          "source": {
+            "start": 341,
+            "end": 384,
+            "quote": "Return plan status: show for every request."
+          }
+        },
+        {
+          "id": "garden-tool-shed-r4",
+          "field": "return_plan",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "powered_tool",
+                "value": true
+              },
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "return_before_dusk",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "source": {
+            "start": 385,
+            "end": 500,
+            "quote": "Return plan status: an answer is mandatory if and only if a powered tool is selected and return is not before dusk."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Garden Tool Shed",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "weather",
+                "title": "Weather",
+                "type": "radiogroup",
+                "choices": [
+                  "sunny",
+                  "rainy"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "soil_boxes",
+                "title": "Soil boxes",
+                "type": "text",
+                "inputType": "number",
+                "min": 0,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 0,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "powered_tool",
+                "title": "Powered tool selected",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "return_before_dusk",
+                "title": "Return before dusk",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "ground_sheet",
+                "title": "Ground sheet status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({weather} = 'rainy')",
+                "requiredIf": "(({soil_boxes} >= 2) and ({powered_tool} = true))"
+              },
+              {
+                "name": "return_plan",
+                "title": "Return plan status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "true",
+                "requiredIf": "(({powered_tool} = true) and ({return_before_dusk} != true))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Garden Tool Shed",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "weather",
+                "title": "Weather",
+                "type": "radiogroup",
+                "choices": [
+                  "sunny",
+                  "rainy"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "soil_boxes",
+                "title": "Soil boxes",
+                "type": "text",
+                "inputType": "number",
+                "min": 0,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 0,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "powered_tool",
+                "title": "Powered tool selected",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "return_before_dusk",
+                "title": "Return before dusk",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "ground_sheet",
+                "title": "Ground sheet status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({weather} = 'rainy')",
+                "requiredIf": "(({soil_boxes} > 2) and ({powered_tool} = true))"
+              },
+              {
+                "name": "return_plan",
+                "title": "Return plan status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "true",
+                "requiredIf": "(({powered_tool} = true) and ({return_before_dusk} != true))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Move the required ground sheet boundary from at least 2 soil boxes to more than 2.",
+      "targetField": "ground_sheet",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "audio-cart",
+    "title": "Portable Audio Cart",
+    "split": "dev",
+    "wordingStyle": "sequential directives",
+    "policy": "Choose an open_air or hall venue, 1 to 4 speaker units, mains availability, and whether a steward is present. First, display cable cover status exactly when mains power is available and at least 2 speaker units are selected. Next, if cable cover status is displayed, demand an answer exactly when the venue is hall or a steward is not present. Then display wind screen status exactly when the venue is open_air. Finally, demand an answer to wind screen status whenever it is displayed.",
+    "fields": [
+      {
+        "name": "venue",
+        "label": "Venue",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "open_air",
+          "hall"
+        ]
+      },
+      {
+        "name": "speaker_units",
+        "label": "Speaker units",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "mains_available",
+        "label": "Mains power available",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "steward_present",
+        "label": "Steward present",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "cable_cover",
+        "label": "Cable cover status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "wind_screen",
+        "label": "Wind screen status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "audio-cart-r1",
+          "field": "cable_cover",
+          "property": "visible",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "mains_available",
+                "value": true
+              },
+              {
+                "op": "gte",
+                "field": "speaker_units",
+                "value": 2
+              }
+            ]
+          },
+          "source": {
+            "start": 110,
+            "end": 224,
+            "quote": "First, display cable cover status exactly when mains power is available and at least 2 speaker units are selected."
+          }
+        },
+        {
+          "id": "audio-cart-r2",
+          "field": "cable_cover",
+          "property": "required",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "venue",
+                "value": "hall"
+              },
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "steward_present",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "source": {
+            "start": 225,
+            "end": 343,
+            "quote": "Next, if cable cover status is displayed, demand an answer exactly when the venue is hall or a steward is not present."
+          }
+        },
+        {
+          "id": "audio-cart-r3",
+          "field": "wind_screen",
+          "property": "visible",
+          "condition": {
+            "op": "eq",
+            "field": "venue",
+            "value": "open_air"
+          },
+          "source": {
+            "start": 344,
+            "end": 411,
+            "quote": "Then display wind screen status exactly when the venue is open_air."
+          }
+        },
+        {
+          "id": "audio-cart-r4",
+          "field": "wind_screen",
+          "property": "required",
+          "condition": true,
+          "source": {
+            "start": 412,
+            "end": 485,
+            "quote": "Finally, demand an answer to wind screen status whenever it is displayed."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Portable Audio Cart",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "venue",
+                "title": "Venue",
+                "type": "radiogroup",
+                "choices": [
+                  "open_air",
+                  "hall"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "speaker_units",
+                "title": "Speaker units",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "mains_available",
+                "title": "Mains power available",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "steward_present",
+                "title": "Steward present",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cable_cover",
+                "title": "Cable cover status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({mains_available} = true) and ({speaker_units} >= 2))",
+                "requiredIf": "(({venue} = 'hall') or ({steward_present} != true))"
+              },
+              {
+                "name": "wind_screen",
+                "title": "Wind screen status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({venue} = 'open_air')",
+                "requiredIf": "true"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Portable Audio Cart",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "venue",
+                "title": "Venue",
+                "type": "radiogroup",
+                "choices": [
+                  "open_air",
+                  "hall"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "speaker_units",
+                "title": "Speaker units",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "mains_available",
+                "title": "Mains power available",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "steward_present",
+                "title": "Steward present",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cable_cover",
+                "title": "Cable cover status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({mains_available} = true) or ({speaker_units} >= 2))",
+                "requiredIf": "(({venue} = 'hall') or ({steward_present} != true))"
+              },
+              {
+                "name": "wind_screen",
+                "title": "Wind screen status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({venue} = 'open_air')",
+                "requiredIf": "true"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Replace AND with OR in the cable cover visibility condition.",
+      "targetField": "cable_cover",
+      "property": "visible",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "pottery-cart",
+    "title": "Pottery Equipment Cart",
+    "split": "dev",
+    "wordingStyle": "exception-first clauses",
+    "policy": "Record use of the glazing area, 1 to 3 carts, whether equipment is returned clean, and an item choice of kit or wheel. Unless neither the glazing area is used nor the item is wheel, show drip tray status; in that excluded case, hide it. Equipment returned clean is exempt from a drip tray answer; otherwise, while that field is shown, require it exactly when the glazing area is used. Hide porter note recorded for fewer than 2 carts; show it for 2 or 3 carts. While porter note recorded is shown, require an answer exactly when the item is wheel and there are 3 carts.",
+    "fields": [
+      {
+        "name": "glazing_area",
+        "label": "Glazing area used",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "cart_count",
+        "label": "Cart count",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 3
+      },
+      {
+        "name": "returned_clean",
+        "label": "Equipment returned clean",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "item",
+        "label": "Item",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "kit",
+          "wheel"
+        ]
+      },
+      {
+        "name": "drip_tray",
+        "label": "Drip tray status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "porter_note",
+        "label": "Porter note recorded",
+        "role": "target",
+        "kind": "boolean"
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "pottery-cart-r1",
+          "field": "drip_tray",
+          "property": "visible",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "glazing_area",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "field": "item",
+                "value": "wheel"
+              }
+            ]
+          },
+          "source": {
+            "start": 119,
+            "end": 236,
+            "quote": "Unless neither the glazing area is used nor the item is wheel, show drip tray status; in that excluded case, hide it."
+          }
+        },
+        {
+          "id": "pottery-cart-r2",
+          "field": "drip_tray",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "glazing_area",
+                "value": true
+              },
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "returned_clean",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "source": {
+            "start": 237,
+            "end": 384,
+            "quote": "Equipment returned clean is exempt from a drip tray answer; otherwise, while that field is shown, require it exactly when the glazing area is used."
+          }
+        },
+        {
+          "id": "pottery-cart-r3",
+          "field": "porter_note",
+          "property": "visible",
+          "condition": {
+            "op": "gte",
+            "field": "cart_count",
+            "value": 2
+          },
+          "source": {
+            "start": 385,
+            "end": 460,
+            "quote": "Hide porter note recorded for fewer than 2 carts; show it for 2 or 3 carts."
+          }
+        },
+        {
+          "id": "pottery-cart-r4",
+          "field": "porter_note",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "item",
+                "value": "wheel"
+              },
+              {
+                "op": "eq",
+                "field": "cart_count",
+                "value": 3
+              }
+            ]
+          },
+          "source": {
+            "start": 461,
+            "end": 569,
+            "quote": "While porter note recorded is shown, require an answer exactly when the item is wheel and there are 3 carts."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Pottery Equipment Cart",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "glazing_area",
+                "title": "Glazing area used",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cart_count",
+                "title": "Cart count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 3,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 3
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "returned_clean",
+                "title": "Equipment returned clean",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "item",
+                "title": "Item",
+                "type": "radiogroup",
+                "choices": [
+                  "kit",
+                  "wheel"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "drip_tray",
+                "title": "Drip tray status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({glazing_area} = true) or ({item} = 'wheel'))",
+                "requiredIf": "(({glazing_area} = true) and ({returned_clean} != true))"
+              },
+              {
+                "name": "porter_note",
+                "title": "Porter note recorded",
+                "type": "boolean",
+                "visibleIf": "({cart_count} >= 2)",
+                "requiredIf": "(({item} = 'wheel') and ({cart_count} = 3))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Pottery Equipment Cart",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "glazing_area",
+                "title": "Glazing area used",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cart_count",
+                "title": "Cart count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 3,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 3
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "returned_clean",
+                "title": "Equipment returned clean",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "item",
+                "title": "Item",
+                "type": "radiogroup",
+                "choices": [
+                  "kit",
+                  "wheel"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "drip_tray",
+                "title": "Drip tray status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({glazing_area} = true) or ({item} = 'wheel'))",
+                "requiredIf": "({glazing_area} = true)"
+              },
+              {
+                "name": "porter_note",
+                "title": "Porter note recorded",
+                "type": "boolean",
+                "visibleIf": "({cart_count} >= 2)",
+                "requiredIf": "(({item} = 'wheel') and ({cart_count} = 3))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Drop the returned-clean exception from required drip tray status.",
+      "targetField": "drip_tray",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "community-hall",
+    "title": "Community Hall Layout",
+    "split": "dev",
+    "wordingStyle": "paired condition statements",
+    "policy": "Select workshop, social, or rehearsal as the event format, an attendance band from 1 to 5, and the furniture moved and house host choices. If furniture is moved, show layout record status; if furniture is not moved, hide it. While layout record status is shown, require it for workshop events or attendance bands of at least 4; otherwise leave it optional. Show closeout check status for all event formats. Require closeout check status if a house host is not present and the event format is not rehearsal; otherwise leave it optional.",
+    "fields": [
+      {
+        "name": "event_format",
+        "label": "Event format",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "workshop",
+          "social",
+          "rehearsal"
+        ]
+      },
+      {
+        "name": "attendance_band",
+        "label": "Attendance band",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "furniture_moved",
+        "label": "Furniture moved",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "house_host",
+        "label": "House host present",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "layout_record",
+        "label": "Layout record status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "closeout_check",
+        "label": "Closeout check status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "community-hall-r1",
+          "field": "layout_record",
+          "property": "visible",
+          "condition": {
+            "op": "eq",
+            "field": "furniture_moved",
+            "value": true
+          },
+          "source": {
+            "start": 139,
+            "end": 224,
+            "quote": "If furniture is moved, show layout record status; if furniture is not moved, hide it."
+          }
+        },
+        {
+          "id": "community-hall-r2",
+          "field": "layout_record",
+          "property": "required",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "event_format",
+                "value": "workshop"
+              },
+              {
+                "op": "gte",
+                "field": "attendance_band",
+                "value": 4
+              }
+            ]
+          },
+          "source": {
+            "start": 225,
+            "end": 356,
+            "quote": "While layout record status is shown, require it for workshop events or attendance bands of at least 4; otherwise leave it optional."
+          }
+        },
+        {
+          "id": "community-hall-r3",
+          "field": "closeout_check",
+          "property": "visible",
+          "condition": true,
+          "source": {
+            "start": 357,
+            "end": 406,
+            "quote": "Show closeout check status for all event formats."
+          }
+        },
+        {
+          "id": "community-hall-r4",
+          "field": "closeout_check",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "house_host",
+                  "value": true
+                }
+              },
+              {
+                "op": "ne",
+                "field": "event_format",
+                "value": "rehearsal"
+              }
+            ]
+          },
+          "source": {
+            "start": 407,
+            "end": 535,
+            "quote": "Require closeout check status if a house host is not present and the event format is not rehearsal; otherwise leave it optional."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Community Hall Layout",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "event_format",
+                "title": "Event format",
+                "type": "radiogroup",
+                "choices": [
+                  "workshop",
+                  "social",
+                  "rehearsal"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "attendance_band",
+                "title": "Attendance band",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "furniture_moved",
+                "title": "Furniture moved",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "house_host",
+                "title": "House host present",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "layout_record",
+                "title": "Layout record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({furniture_moved} = true)",
+                "requiredIf": "(({event_format} = 'workshop') or ({attendance_band} >= 4))"
+              },
+              {
+                "name": "closeout_check",
+                "title": "Closeout check status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "true",
+                "requiredIf": "(({house_host} != true) and ({event_format} != 'rehearsal'))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Community Hall Layout",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "event_format",
+                "title": "Event format",
+                "type": "radiogroup",
+                "choices": [
+                  "workshop",
+                  "social",
+                  "rehearsal"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "attendance_band",
+                "title": "Attendance band",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "furniture_moved",
+                "title": "Furniture moved",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "house_host",
+                "title": "House host present",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "layout_record",
+                "title": "Layout record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({furniture_moved} = true)",
+                "requiredIf": "(({event_format} = 'social') or ({attendance_band} >= 4))"
+              },
+              {
+                "name": "closeout_check",
+                "title": "Closeout check status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "true",
+                "requiredIf": "(({house_host} != true) and ({event_format} != 'rehearsal'))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Use the social choice instead of workshop in required layout record status.",
+      "targetField": "layout_record",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "board-game-loan",
+    "title": "Board Game Library Loan",
+    "split": "dev",
+    "wordingStyle": "checklist prose",
+    "policy": "The loan checklist records a span of 1 to 5 sessions, a compact or large set, whether extra pieces are included, and whether return is to a locker. Checklist item A, piece inventory status: visible exactly when extra pieces are included. Checklist item A: while visible, an answer is required exactly when the set type is large. Checklist item B, handoff note status: visible exactly when return is not to a locker. Checklist item B: while visible, an answer is required exactly when the loan spans at least 3 sessions.",
+    "fields": [
+      {
+        "name": "loan_span",
+        "label": "Loan span in sessions",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "set_type",
+        "label": "Set type",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "compact",
+          "large"
+        ]
+      },
+      {
+        "name": "extra_pieces",
+        "label": "Extra pieces included",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "returning_to_locker",
+        "label": "Returning to locker",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "piece_inventory",
+        "label": "Piece inventory status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "handoff_note",
+        "label": "Handoff note status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "board-game-loan-r1",
+          "field": "piece_inventory",
+          "property": "visible",
+          "condition": {
+            "op": "eq",
+            "field": "extra_pieces",
+            "value": true
+          },
+          "source": {
+            "start": 148,
+            "end": 237,
+            "quote": "Checklist item A, piece inventory status: visible exactly when extra pieces are included."
+          }
+        },
+        {
+          "id": "board-game-loan-r2",
+          "field": "piece_inventory",
+          "property": "required",
+          "condition": {
+            "op": "eq",
+            "field": "set_type",
+            "value": "large"
+          },
+          "source": {
+            "start": 238,
+            "end": 328,
+            "quote": "Checklist item A: while visible, an answer is required exactly when the set type is large."
+          }
+        },
+        {
+          "id": "board-game-loan-r3",
+          "field": "handoff_note",
+          "property": "visible",
+          "condition": {
+            "op": "not",
+            "arg": {
+              "op": "eq",
+              "field": "returning_to_locker",
+              "value": true
+            }
+          },
+          "source": {
+            "start": 329,
+            "end": 415,
+            "quote": "Checklist item B, handoff note status: visible exactly when return is not to a locker."
+          }
+        },
+        {
+          "id": "board-game-loan-r4",
+          "field": "handoff_note",
+          "property": "required",
+          "condition": {
+            "op": "gte",
+            "field": "loan_span",
+            "value": 3
+          },
+          "source": {
+            "start": 416,
+            "end": 519,
+            "quote": "Checklist item B: while visible, an answer is required exactly when the loan spans at least 3 sessions."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Board Game Library Loan",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "loan_span",
+                "title": "Loan span in sessions",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "set_type",
+                "title": "Set type",
+                "type": "radiogroup",
+                "choices": [
+                  "compact",
+                  "large"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "extra_pieces",
+                "title": "Extra pieces included",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "returning_to_locker",
+                "title": "Returning to locker",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "piece_inventory",
+                "title": "Piece inventory status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({extra_pieces} = true)",
+                "requiredIf": "({set_type} = 'large')"
+              },
+              {
+                "name": "handoff_note",
+                "title": "Handoff note status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({returning_to_locker} != true)",
+                "requiredIf": "({loan_span} >= 3)"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Board Game Library Loan",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "loan_span",
+                "title": "Loan span in sessions",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "set_type",
+                "title": "Set type",
+                "type": "radiogroup",
+                "choices": [
+                  "compact",
+                  "large"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "extra_pieces",
+                "title": "Extra pieces included",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "returning_to_locker",
+                "title": "Returning to locker",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "piece_inventory",
+                "title": "Piece inventory status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({extra_pieces} = true)",
+                "requiredIf": "({set_type} = 'large')"
+              },
+              {
+                "name": "handoff_note",
+                "title": "Handoff note status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({returning_to_locker} != true)",
+                "requiredIf": "true"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Make handoff note status unconditionally required whenever visible, including shorter loans.",
+      "targetField": "handoff_note",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "maker-bench",
+    "title": "Shared Maker Bench",
+    "split": "dev",
+    "wordingStyle": "question-and-answer guide",
+    "policy": "A booking selects an assembly or painting bench, 1 to 4 duration blocks, a shared surface choice, and an organizer on site choice. When does surface cover status appear? Exactly when the bench kind is painting or a shared surface is used. When does surface cover status need an answer while shown? Exactly when the bench kind is painting and the duration is at least 2 blocks. When does cleanup recorded appear? Exactly when the organizer is not on site. When does cleanup recorded need an answer while shown? Exactly when a shared surface is used or the duration is 4 blocks.",
+    "fields": [
+      {
+        "name": "bench_kind",
+        "label": "Bench kind",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "assembly",
+          "painting"
+        ]
+      },
+      {
+        "name": "duration_blocks",
+        "label": "Duration blocks",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "shared_surface",
+        "label": "Shared surface used",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "organizer_on_site",
+        "label": "Organizer on site",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "surface_cover",
+        "label": "Surface cover status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "cleanup_record",
+        "label": "Cleanup recorded",
+        "role": "target",
+        "kind": "boolean"
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "maker-bench-r1",
+          "field": "surface_cover",
+          "property": "visible",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "bench_kind",
+                "value": "painting"
+              },
+              {
+                "op": "eq",
+                "field": "shared_surface",
+                "value": true
+              }
+            ]
+          },
+          "source": {
+            "start": 131,
+            "end": 238,
+            "quote": "When does surface cover status appear? Exactly when the bench kind is painting or a shared surface is used."
+          }
+        },
+        {
+          "id": "maker-bench-r2",
+          "field": "surface_cover",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "bench_kind",
+                "value": "painting"
+              },
+              {
+                "op": "gte",
+                "field": "duration_blocks",
+                "value": 2
+              }
+            ]
+          },
+          "source": {
+            "start": 239,
+            "end": 376,
+            "quote": "When does surface cover status need an answer while shown? Exactly when the bench kind is painting and the duration is at least 2 blocks."
+          }
+        },
+        {
+          "id": "maker-bench-r3",
+          "field": "cleanup_record",
+          "property": "visible",
+          "condition": {
+            "op": "not",
+            "arg": {
+              "op": "eq",
+              "field": "organizer_on_site",
+              "value": true
+            }
+          },
+          "source": {
+            "start": 377,
+            "end": 454,
+            "quote": "When does cleanup recorded appear? Exactly when the organizer is not on site."
+          }
+        },
+        {
+          "id": "maker-bench-r4",
+          "field": "cleanup_record",
+          "property": "required",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "shared_surface",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "field": "duration_blocks",
+                "value": 4
+              }
+            ]
+          },
+          "source": {
+            "start": 455,
+            "end": 576,
+            "quote": "When does cleanup recorded need an answer while shown? Exactly when a shared surface is used or the duration is 4 blocks."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Shared Maker Bench",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "bench_kind",
+                "title": "Bench kind",
+                "type": "radiogroup",
+                "choices": [
+                  "assembly",
+                  "painting"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "duration_blocks",
+                "title": "Duration blocks",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "shared_surface",
+                "title": "Shared surface used",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "organizer_on_site",
+                "title": "Organizer on site",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "surface_cover",
+                "title": "Surface cover status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({bench_kind} = 'painting') or ({shared_surface} = true))",
+                "requiredIf": "(({bench_kind} = 'painting') and ({duration_blocks} >= 2))"
+              },
+              {
+                "name": "cleanup_record",
+                "title": "Cleanup recorded",
+                "type": "boolean",
+                "visibleIf": "({organizer_on_site} != true)",
+                "requiredIf": "(({shared_surface} = true) or ({duration_blocks} = 4))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Shared Maker Bench",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "bench_kind",
+                "title": "Bench kind",
+                "type": "radiogroup",
+                "choices": [
+                  "assembly",
+                  "painting"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "duration_blocks",
+                "title": "Duration blocks",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "shared_surface",
+                "title": "Shared surface used",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "organizer_on_site",
+                "title": "Organizer on site",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "surface_cover",
+                "title": "Surface cover status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({bench_kind} = 'painting') or ({shared_surface} = true))",
+                "requiredIf": "(({bench_kind} = 'painting') and ({duration_blocks} >= 2))"
+              },
+              {
+                "name": "cleanup_record",
+                "title": "Cleanup recorded",
+                "type": "boolean",
+                "visibleIf": "({bench_kind} = 'painting')",
+                "requiredIf": "(({shared_surface} = true) or ({duration_blocks} = 4))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Apply the painting-bench predicate to cleanup visibility instead of organizer absence.",
+      "targetField": "cleanup_record",
+      "property": "visible",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "projector-kit",
+    "title": "Projector Kit Loan",
+    "split": "dev",
+    "wordingStyle": "semicolon provisions",
+    "policy": "Choose a portable or fixed screen setup; choose 1 to 3 rooms; record whether a ceiling mount is used and whether an adapter is needed. Stand check status is shown exactly when the screen setup is portable and a ceiling mount is not used; it is hidden otherwise. While shown, stand check status is required for more than 1 room; it is optional for 1 room. Adapter log status is shown when an adapter is needed; it is hidden when an adapter is not needed. While shown, adapter log status is required when the screen setup is portable or at least 3 rooms are selected; it is optional otherwise.",
+    "fields": [
+      {
+        "name": "screen_setup",
+        "label": "Screen setup",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "portable",
+          "fixed"
+        ]
+      },
+      {
+        "name": "room_count",
+        "label": "Room count",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 3
+      },
+      {
+        "name": "ceiling_mount",
+        "label": "Ceiling mount used",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "adapter_needed",
+        "label": "Adapter needed",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "stand_check",
+        "label": "Stand check status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "adapter_log",
+        "label": "Adapter log status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "projector-kit-r1",
+          "field": "stand_check",
+          "property": "visible",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "screen_setup",
+                "value": "portable"
+              },
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "ceiling_mount",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "source": {
+            "start": 135,
+            "end": 261,
+            "quote": "Stand check status is shown exactly when the screen setup is portable and a ceiling mount is not used; it is hidden otherwise."
+          }
+        },
+        {
+          "id": "projector-kit-r2",
+          "field": "stand_check",
+          "property": "required",
+          "condition": {
+            "op": "gt",
+            "field": "room_count",
+            "value": 1
+          },
+          "source": {
+            "start": 262,
+            "end": 354,
+            "quote": "While shown, stand check status is required for more than 1 room; it is optional for 1 room."
+          }
+        },
+        {
+          "id": "projector-kit-r3",
+          "field": "adapter_log",
+          "property": "visible",
+          "condition": {
+            "op": "eq",
+            "field": "adapter_needed",
+            "value": true
+          },
+          "source": {
+            "start": 355,
+            "end": 453,
+            "quote": "Adapter log status is shown when an adapter is needed; it is hidden when an adapter is not needed."
+          }
+        },
+        {
+          "id": "projector-kit-r4",
+          "field": "adapter_log",
+          "property": "required",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "screen_setup",
+                "value": "portable"
+              },
+              {
+                "op": "gte",
+                "field": "room_count",
+                "value": 3
+              }
+            ]
+          },
+          "source": {
+            "start": 454,
+            "end": 591,
+            "quote": "While shown, adapter log status is required when the screen setup is portable or at least 3 rooms are selected; it is optional otherwise."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Projector Kit Loan",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "screen_setup",
+                "title": "Screen setup",
+                "type": "radiogroup",
+                "choices": [
+                  "portable",
+                  "fixed"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "room_count",
+                "title": "Room count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 3,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 3
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "ceiling_mount",
+                "title": "Ceiling mount used",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "adapter_needed",
+                "title": "Adapter needed",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "stand_check",
+                "title": "Stand check status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({screen_setup} = 'portable') and ({ceiling_mount} != true))",
+                "requiredIf": "({room_count} > 1)"
+              },
+              {
+                "name": "adapter_log",
+                "title": "Adapter log status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({adapter_needed} = true)",
+                "requiredIf": "(({screen_setup} = 'portable') or ({room_count} >= 3))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Projector Kit Loan",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "screen_setup",
+                "title": "Screen setup",
+                "type": "radiogroup",
+                "choices": [
+                  "portable",
+                  "fixed"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "room_count",
+                "title": "Room count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 3,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 3
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "ceiling_mount",
+                "title": "Ceiling mount used",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "adapter_needed",
+                "title": "Adapter needed",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "stand_check",
+                "title": "Stand check status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({screen_setup} = 'portable') and ({ceiling_mount} != true))",
+                "requiredIf": "({room_count} >= 1)"
+              },
+              {
+                "name": "adapter_log",
+                "title": "Adapter log status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({adapter_needed} = true)",
+                "requiredIf": "(({screen_setup} = 'portable') or ({room_count} >= 3))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Include the 1-room boundary by changing more than 1 to at least 1 for required stand check status.",
+      "targetField": "stand_check",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "picnic-kit",
+    "title": "Community Picnic Kit",
+    "split": "holdout",
+    "wordingStyle": "worked-scenario framing",
+    "policy": "Imagine collecting a picnic kit. The weather plan is sheltered or open, the table count is 0 to 4, and separate choices record reusable dishes and pickup by cart. In a request with one or more tables you see cloth record status; a request with zero tables does not show it. If you can see cloth record status, you must answer it exactly in the scenario where the weather plan is open and reusable dishes are selected. You see packing note status exactly in the scenario where pickup is not by cart. If you can see packing note status, you must answer it exactly in scenarios with at least 2 tables or with reusable dishes selected.",
+    "fields": [
+      {
+        "name": "weather_plan",
+        "label": "Weather plan",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "sheltered",
+          "open"
+        ]
+      },
+      {
+        "name": "table_count",
+        "label": "Table count",
+        "role": "driver",
+        "kind": "integer",
+        "min": 0,
+        "max": 4
+      },
+      {
+        "name": "reusable_dishes",
+        "label": "Reusable dishes selected",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "pickup_by_cart",
+        "label": "Pickup by cart",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "cloth_record",
+        "label": "Cloth record status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "packing_note",
+        "label": "Packing note status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "picnic-kit-r1",
+          "field": "cloth_record",
+          "property": "visible",
+          "condition": {
+            "op": "gt",
+            "field": "table_count",
+            "value": 0
+          },
+          "source": {
+            "start": 163,
+            "end": 273,
+            "quote": "In a request with one or more tables you see cloth record status; a request with zero tables does not show it."
+          }
+        },
+        {
+          "id": "picnic-kit-r2",
+          "field": "cloth_record",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "weather_plan",
+                "value": "open"
+              },
+              {
+                "op": "eq",
+                "field": "reusable_dishes",
+                "value": true
+              }
+            ]
+          },
+          "source": {
+            "start": 274,
+            "end": 417,
+            "quote": "If you can see cloth record status, you must answer it exactly in the scenario where the weather plan is open and reusable dishes are selected."
+          }
+        },
+        {
+          "id": "picnic-kit-r3",
+          "field": "packing_note",
+          "property": "visible",
+          "condition": {
+            "op": "not",
+            "arg": {
+              "op": "eq",
+              "field": "pickup_by_cart",
+              "value": true
+            }
+          },
+          "source": {
+            "start": 418,
+            "end": 498,
+            "quote": "You see packing note status exactly in the scenario where pickup is not by cart."
+          }
+        },
+        {
+          "id": "picnic-kit-r4",
+          "field": "packing_note",
+          "property": "required",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "gte",
+                "field": "table_count",
+                "value": 2
+              },
+              {
+                "op": "eq",
+                "field": "reusable_dishes",
+                "value": true
+              }
+            ]
+          },
+          "source": {
+            "start": 499,
+            "end": 631,
+            "quote": "If you can see packing note status, you must answer it exactly in scenarios with at least 2 tables or with reusable dishes selected."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Community Picnic Kit",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "weather_plan",
+                "title": "Weather plan",
+                "type": "radiogroup",
+                "choices": [
+                  "sheltered",
+                  "open"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "table_count",
+                "title": "Table count",
+                "type": "text",
+                "inputType": "number",
+                "min": 0,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 0,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "reusable_dishes",
+                "title": "Reusable dishes selected",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "pickup_by_cart",
+                "title": "Pickup by cart",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cloth_record",
+                "title": "Cloth record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({table_count} > 0)",
+                "requiredIf": "(({weather_plan} = 'open') and ({reusable_dishes} = true))"
+              },
+              {
+                "name": "packing_note",
+                "title": "Packing note status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({pickup_by_cart} != true)",
+                "requiredIf": "(({table_count} >= 2) or ({reusable_dishes} = true))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Community Picnic Kit",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "weather_plan",
+                "title": "Weather plan",
+                "type": "radiogroup",
+                "choices": [
+                  "sheltered",
+                  "open"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "table_count",
+                "title": "Table count",
+                "type": "text",
+                "inputType": "number",
+                "min": 0,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 0,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "reusable_dishes",
+                "title": "Reusable dishes selected",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "pickup_by_cart",
+                "title": "Pickup by cart",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cloth_record",
+                "title": "Cloth record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({table_count} > 0)",
+                "requiredIf": "(({weather_plan} != 'open') and ({reusable_dishes} = true))"
+              },
+              {
+                "name": "packing_note",
+                "title": "Packing note status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({pickup_by_cart} != true)",
+                "requiredIf": "(({table_count} >= 2) or ({reusable_dishes} = true))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Reverse the open weather-plan predicate in required cloth record status.",
+      "targetField": "cloth_record",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "puppet-stage",
+    "title": "Puppet Stage Booking",
+    "split": "holdout",
+    "wordingStyle": "polite request with exemption",
+    "policy": "Please choose a shadow or hand show, 1 to 4 panels, whether curtains are requested, and whether the host brings a case. Please display backdrop record status for shadow shows or requests with curtains, and for no other requests. Please require a visible backdrop record answer for requests with at least 3 panels, except that a host bringing a case is exempt; all other requests leave it optional. Please display storage note status exactly when the host does not bring a case and there are at least 2 panels. Please require storage note status, while displayed, exactly when curtains are requested.",
+    "fields": [
+      {
+        "name": "show_format",
+        "label": "Show format",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "shadow",
+          "hand"
+        ]
+      },
+      {
+        "name": "panels",
+        "label": "Panel count",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "curtains",
+        "label": "Curtains requested",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "host_brings_case",
+        "label": "Host brings a case",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "backdrop_record",
+        "label": "Backdrop record status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "storage_note",
+        "label": "Storage note status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "puppet-stage-r1",
+          "field": "backdrop_record",
+          "property": "visible",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "show_format",
+                "value": "shadow"
+              },
+              {
+                "op": "eq",
+                "field": "curtains",
+                "value": true
+              }
+            ]
+          },
+          "source": {
+            "start": 120,
+            "end": 228,
+            "quote": "Please display backdrop record status for shadow shows or requests with curtains, and for no other requests."
+          }
+        },
+        {
+          "id": "puppet-stage-r2",
+          "field": "backdrop_record",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "gte",
+                "field": "panels",
+                "value": 3
+              },
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "host_brings_case",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "source": {
+            "start": 229,
+            "end": 397,
+            "quote": "Please require a visible backdrop record answer for requests with at least 3 panels, except that a host bringing a case is exempt; all other requests leave it optional."
+          }
+        },
+        {
+          "id": "puppet-stage-r3",
+          "field": "storage_note",
+          "property": "visible",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "host_brings_case",
+                  "value": true
+                }
+              },
+              {
+                "op": "gte",
+                "field": "panels",
+                "value": 2
+              }
+            ]
+          },
+          "source": {
+            "start": 398,
+            "end": 509,
+            "quote": "Please display storage note status exactly when the host does not bring a case and there are at least 2 panels."
+          }
+        },
+        {
+          "id": "puppet-stage-r4",
+          "field": "storage_note",
+          "property": "required",
+          "condition": {
+            "op": "eq",
+            "field": "curtains",
+            "value": true
+          },
+          "source": {
+            "start": 510,
+            "end": 599,
+            "quote": "Please require storage note status, while displayed, exactly when curtains are requested."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Puppet Stage Booking",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "show_format",
+                "title": "Show format",
+                "type": "radiogroup",
+                "choices": [
+                  "shadow",
+                  "hand"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "panels",
+                "title": "Panel count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "curtains",
+                "title": "Curtains requested",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "host_brings_case",
+                "title": "Host brings a case",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "backdrop_record",
+                "title": "Backdrop record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({show_format} = 'shadow') or ({curtains} = true))",
+                "requiredIf": "(({panels} >= 3) and ({host_brings_case} != true))"
+              },
+              {
+                "name": "storage_note",
+                "title": "Storage note status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({host_brings_case} != true) and ({panels} >= 2))",
+                "requiredIf": "({curtains} = true)"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Puppet Stage Booking",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "show_format",
+                "title": "Show format",
+                "type": "radiogroup",
+                "choices": [
+                  "shadow",
+                  "hand"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "panels",
+                "title": "Panel count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 4,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 4
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "curtains",
+                "title": "Curtains requested",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "host_brings_case",
+                "title": "Host brings a case",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "backdrop_record",
+                "title": "Backdrop record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({show_format} = 'shadow') or ({curtains} = true))",
+                "requiredIf": "({panels} >= 3)"
+              },
+              {
+                "name": "storage_note",
+                "title": "Storage note status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({host_brings_case} != true) and ({panels} >= 2))",
+                "requiredIf": "({curtains} = true)"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Lose the host-provided-case exemption from required backdrop record status.",
+      "targetField": "backdrop_record",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "puzzle-table",
+    "title": "Puzzle Table Reservation",
+    "split": "holdout",
+    "wordingStyle": "eligibility-set language",
+    "policy": "The reservation describes a pocket or floor puzzle, 1 to 5 table sections, a shared session choice, and whether the organizer supplies a mat. The set of reservations showing mat record status consists exactly of floor puzzles whose organizer does not supply a mat. Among reservations showing mat record status, the answer-required set includes exactly those with at least 2 table sections or a shared session. The set of reservations showing sorting plan recorded consists exactly of shared sessions or reservations with at least 3 table sections. Among reservations showing sorting plan recorded, the answer-required set includes exactly floor puzzles with more than 3 table sections.",
+    "fields": [
+      {
+        "name": "puzzle_size",
+        "label": "Puzzle size",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "pocket",
+          "floor"
+        ]
+      },
+      {
+        "name": "table_sections",
+        "label": "Table sections",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "shared_session",
+        "label": "Shared session",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "organizer_supplies_mat",
+        "label": "Organizer supplies a mat",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "mat_record",
+        "label": "Mat record status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "sorting_plan",
+        "label": "Sorting plan recorded",
+        "role": "target",
+        "kind": "boolean"
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "puzzle-table-r1",
+          "field": "mat_record",
+          "property": "visible",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "puzzle_size",
+                "value": "floor"
+              },
+              {
+                "op": "not",
+                "arg": {
+                  "op": "eq",
+                  "field": "organizer_supplies_mat",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "source": {
+            "start": 142,
+            "end": 264,
+            "quote": "The set of reservations showing mat record status consists exactly of floor puzzles whose organizer does not supply a mat."
+          }
+        },
+        {
+          "id": "puzzle-table-r2",
+          "field": "mat_record",
+          "property": "required",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "gte",
+                "field": "table_sections",
+                "value": 2
+              },
+              {
+                "op": "eq",
+                "field": "shared_session",
+                "value": true
+              }
+            ]
+          },
+          "source": {
+            "start": 265,
+            "end": 409,
+            "quote": "Among reservations showing mat record status, the answer-required set includes exactly those with at least 2 table sections or a shared session."
+          }
+        },
+        {
+          "id": "puzzle-table-r3",
+          "field": "sorting_plan",
+          "property": "visible",
+          "condition": {
+            "op": "any",
+            "args": [
+              {
+                "op": "eq",
+                "field": "shared_session",
+                "value": true
+              },
+              {
+                "op": "gte",
+                "field": "table_sections",
+                "value": 3
+              }
+            ]
+          },
+          "source": {
+            "start": 410,
+            "end": 547,
+            "quote": "The set of reservations showing sorting plan recorded consists exactly of shared sessions or reservations with at least 3 table sections."
+          }
+        },
+        {
+          "id": "puzzle-table-r4",
+          "field": "sorting_plan",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "field": "puzzle_size",
+                "value": "floor"
+              },
+              {
+                "op": "gt",
+                "field": "table_sections",
+                "value": 3
+              }
+            ]
+          },
+          "source": {
+            "start": 548,
+            "end": 685,
+            "quote": "Among reservations showing sorting plan recorded, the answer-required set includes exactly floor puzzles with more than 3 table sections."
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Puzzle Table Reservation",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "puzzle_size",
+                "title": "Puzzle size",
+                "type": "radiogroup",
+                "choices": [
+                  "pocket",
+                  "floor"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "table_sections",
+                "title": "Table sections",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "shared_session",
+                "title": "Shared session",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "organizer_supplies_mat",
+                "title": "Organizer supplies a mat",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "mat_record",
+                "title": "Mat record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({puzzle_size} = 'floor') and ({organizer_supplies_mat} != true))",
+                "requiredIf": "(({table_sections} >= 2) or ({shared_session} = true))"
+              },
+              {
+                "name": "sorting_plan",
+                "title": "Sorting plan recorded",
+                "type": "boolean",
+                "visibleIf": "(({shared_session} = true) or ({table_sections} >= 3))",
+                "requiredIf": "(({puzzle_size} = 'floor') and ({table_sections} > 3))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Puzzle Table Reservation",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "puzzle_size",
+                "title": "Puzzle size",
+                "type": "radiogroup",
+                "choices": [
+                  "pocket",
+                  "floor"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "table_sections",
+                "title": "Table sections",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 5
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "shared_session",
+                "title": "Shared session",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "organizer_supplies_mat",
+                "title": "Organizer supplies a mat",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "mat_record",
+                "title": "Mat record status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "(({puzzle_size} = 'floor') and ({organizer_supplies_mat} != true))",
+                "requiredIf": "(({table_sections} >= 2) and ({shared_session} = true))"
+              },
+              {
+                "name": "sorting_plan",
+                "title": "Sorting plan recorded",
+                "type": "boolean",
+                "visibleIf": "(({shared_session} = true) or ({table_sections} >= 3))",
+                "requiredIf": "(({puzzle_size} = 'floor') and ({table_sections} > 3))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Replace OR with AND in the required mat record condition.",
+      "targetField": "mat_record",
+      "property": "required",
+      "expectedDefect": true
+    }
+  },
+  {
+    "id": "costume-rack",
+    "title": "Community Costume Rack Loan",
+    "split": "holdout",
+    "wordingStyle": "coordinator script",
+    "policy": "The coordinator records a rehearsal or display destination, 1 to 3 racks, whether covers are included, and whether the racks fold. The coordinator says, 'Show cover check status exactly when covers are not included.' The coordinator adds, 'Whenever cover check status is shown, require an answer exactly when the destination is display.' For folding plan status, the coordinator says, 'Show this field exactly when folding racks are selected.' The final instruction is, 'Whenever folding plan status is shown, require an answer exactly when there are at least 2 racks and the destination is rehearsal.'",
+    "fields": [
+      {
+        "name": "destination",
+        "label": "Destination",
+        "role": "driver",
+        "kind": "choice",
+        "values": [
+          "rehearsal",
+          "display"
+        ]
+      },
+      {
+        "name": "rack_count",
+        "label": "Rack count",
+        "role": "driver",
+        "kind": "integer",
+        "min": 1,
+        "max": 3
+      },
+      {
+        "name": "covers_included",
+        "label": "Covers included",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "folding_racks",
+        "label": "Folding racks selected",
+        "role": "driver",
+        "kind": "boolean"
+      },
+      {
+        "name": "cover_check",
+        "label": "Cover check status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      },
+      {
+        "name": "folding_plan",
+        "label": "Folding plan status",
+        "role": "target",
+        "kind": "choice",
+        "values": [
+          "provided",
+          "not_available"
+        ]
+      }
+    ],
+    "intendedRules": {
+      "origin": "synthetic-author-reference",
+      "reviewStatus": "pending-human-review",
+      "rules": [
+        {
+          "id": "costume-rack-r1",
+          "field": "cover_check",
+          "property": "visible",
+          "condition": {
+            "op": "not",
+            "arg": {
+              "op": "eq",
+              "field": "covers_included",
+              "value": true
+            }
+          },
+          "source": {
+            "start": 131,
+            "end": 216,
+            "quote": "The coordinator says, 'Show cover check status exactly when covers are not included.'"
+          }
+        },
+        {
+          "id": "costume-rack-r2",
+          "field": "cover_check",
+          "property": "required",
+          "condition": {
+            "op": "eq",
+            "field": "destination",
+            "value": "display"
+          },
+          "source": {
+            "start": 217,
+            "end": 337,
+            "quote": "The coordinator adds, 'Whenever cover check status is shown, require an answer exactly when the destination is display.'"
+          }
+        },
+        {
+          "id": "costume-rack-r3",
+          "field": "folding_plan",
+          "property": "visible",
+          "condition": {
+            "op": "eq",
+            "field": "folding_racks",
+            "value": true
+          },
+          "source": {
+            "start": 338,
+            "end": 443,
+            "quote": "For folding plan status, the coordinator says, 'Show this field exactly when folding racks are selected.'"
+          }
+        },
+        {
+          "id": "costume-rack-r4",
+          "field": "folding_plan",
+          "property": "required",
+          "condition": {
+            "op": "all",
+            "args": [
+              {
+                "op": "gte",
+                "field": "rack_count",
+                "value": 2
+              },
+              {
+                "op": "eq",
+                "field": "destination",
+                "value": "rehearsal"
+              }
+            ]
+          },
+          "source": {
+            "start": 444,
+            "end": 602,
+            "quote": "The final instruction is, 'Whenever folding plan status is shown, require an answer exactly when there are at least 2 racks and the destination is rehearsal.'"
+          }
+        }
+      ]
+    },
+    "forms": {
+      "clean": {
+        "title": "Community Costume Rack Loan",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "destination",
+                "title": "Destination",
+                "type": "radiogroup",
+                "choices": [
+                  "rehearsal",
+                  "display"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "rack_count",
+                "title": "Rack count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 3,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 3
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "covers_included",
+                "title": "Covers included",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "folding_racks",
+                "title": "Folding racks selected",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cover_check",
+                "title": "Cover check status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({covers_included} != true)",
+                "requiredIf": "({destination} = 'display')"
+              },
+              {
+                "name": "folding_plan",
+                "title": "Folding plan status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({folding_racks} = true)",
+                "requiredIf": "(({rack_count} >= 2) and ({destination} = 'rehearsal'))"
+              }
+            ]
+          }
+        ]
+      },
+      "mutant": {
+        "title": "Community Costume Rack Loan",
+        "showQuestionNumbers": "off",
+        "pages": [
+          {
+            "name": "request",
+            "elements": [
+              {
+                "name": "destination",
+                "title": "Destination",
+                "type": "radiogroup",
+                "choices": [
+                  "rehearsal",
+                  "display"
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "rack_count",
+                "title": "Rack count",
+                "type": "text",
+                "inputType": "number",
+                "min": 1,
+                "max": 3,
+                "step": 1,
+                "validators": [
+                  {
+                    "type": "numeric",
+                    "minValue": 1,
+                    "maxValue": 3
+                  }
+                ],
+                "isRequired": true
+              },
+              {
+                "name": "covers_included",
+                "title": "Covers included",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "folding_racks",
+                "title": "Folding racks selected",
+                "type": "boolean",
+                "isRequired": true
+              },
+              {
+                "name": "cover_check",
+                "title": "Cover check status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({covers_included} != true)",
+                "requiredIf": "({destination} = 'display')"
+              },
+              {
+                "name": "folding_plan",
+                "title": "Folding plan status",
+                "type": "radiogroup",
+                "choices": [
+                  "provided",
+                  "not_available"
+                ],
+                "visibleIf": "({covers_included} = true)",
+                "requiredIf": "(({rack_count} >= 2) and ({destination} = 'rehearsal'))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mutation": {
+      "description": "Use the covers-included driver for folding plan visibility instead of the folding-racks driver.",
+      "targetField": "folding_plan",
+      "property": "visible",
+      "expectedDefect": true
+    }
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "id": "audio-cart-v3-recorded",
+  "familyId": "audio-cart",
+  "rawFinalText": "{\n  \"status\": \"ok\",\n  \"rules\": [\n    {\n      \"field\": \"cable_cover\",\n      \"property\": \"visible\",\n      \"condition\": {\n        \"op\": \"all\",\n        \"args\": [\n          {\"op\": \"eq\", \"field\": \"mains_available\", \"value\": true},\n          {\"op\": \"gte\", \"field\": \"speaker_units\", \"value\": 2}\n        ]\n      },\n      \"quote\": \"First, display cable cover status exactly when mains power is available and at least 2 speaker units are selected.\"\n    },\n    {\n      \"field\": \"cable_cover\",\n      \"property\": \"required\",\n      \"condition\": {\n        \"op\": \"all\",\n        \"args\": [\n          {\"op\": \"eq\", \"field\": \"venue\", \"value\": \"hall\"},\n          {\"op\": \"not\", \"arg\": {\"op\": \"eq\", \"field\": \"steward_present\", \"value\": true}}\n        ]\n      },\n      \"quote\": \"Next, if cable cover status is displayed, demand an answer exactly when the venue is hall or a steward is not present.\"\n    },\n    {\n      \"field\": \"wind_screen\",\n      \"property\": \"visible\",\n      \"condition\": {\n        \"op\": \"eq\",\n        \"field\": \"venue\",\n        \"value\": \"open_air\"\n      },\n      \"quote\": \"Then display wind screen status exactly when the venue is open_air.\"\n    },\n    {\n      \"field\": \"wind_screen\",\n      \"property\": \"required\",\n      \"condition\": {\n        \"op\": \"eq\",\n        \"field\": \"venue\",\n        \"value\": \"open_air\"\n      },\n      \"quote\": \"Finally, demand an answer to wind screen status whenever it is displayed.\"\n    }\n  ]\n}",
+  "provenance": {
+    "kind": "recorded-live-provider-response",
+    "provider": "CSCS",
+    "model": "swiss-ai/Apertus-v1.5-70B",
+    "returnedModel": "swiss-ai/Apertus-v1.5-70B",
+    "date": "2026-10-03",
+    "runId": "37158792936",
+    "runAttempt": "1",
+    "runUrl": "https://github.com/sumit1717/doru-formrehearsal/actions/runs/37158792936",
+    "commit": "cdbaff829bf900faabbaf2094e01d2656e982d67",
+    "caseId": "case-004",
+    "contractVersion": "quote-extraction-v3",
+    "requestConfig": {
+      "temperature": 0,
+      "max_tokens": 2048,
+      "stream": false
+    },
+    "requestSha256": "f907df297b027dbdd4afe54c9db6ecb824ede1a474d430c9fdce48ba59f5cecd",
+    "promptSha256": "8eeb76de4158b8dd12475d8d4b6fafba6144d1d52560d2fd0bf9d1806fdc91ce",
+    "settingsSha256": "a921b150f5fc8add74d181283bbfda84fc3ec6d613d7bb651171cba503e32a94",
+    "planSha256": "914385a872087c4958a8c16f3410f0e9bd0eaec0dbf31c8711684de66e64c103",
+    "sourceReportSha256": "cb4b1d3b8a1765810d97de5027f37308faf75d233dcda8767202c87dc72fd848",
+    "sourceManifestSha256": "84053d0846035591247cbdb3f30f21f56d38bd08d516a6450bc6d100d0baf4b7",
+    "sourceContextSha256": "4d6ffc359f6d70eabc914769463a7c4bdfe98fc39c6b208d988c1677ac6dcf37",
+    "rawFinalTextSha256": "f3946f34d7298e356bc362a511e18c517e16fdd5336a4818d3e4d6e7061019f6",
+    "historicalStatus": "scored",
+    "historicalValidity": {
+      "strictJsonValid": true,
+      "wireSchemaValid": true,
+      "normalizedSchemaValid": true
+    },
+    "claim": "Selected exposed synthetic development recording; not blind evaluation or independent human gold. No fresh inference runs in this product flow."
+  }
+}
